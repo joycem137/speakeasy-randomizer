@@ -8,6 +8,7 @@ const roles = [
         power: "You have 15 minutes after the start of the game to choose which team is yours. Report your decision to the Moderator to reeive a Password Card of that team."
         disableRat: true,
         doesNotRequirePair: true,
+        points: 0,
         max: 2,
         image: "femmefatale.png",
         increasesDeception: true
@@ -177,6 +178,7 @@ const roles = [
             name: "Backer",
             image: 'backer.png"'
         },
+        points: 4,
         max: 1,
         increasesAction: true,
         power: "You begin the game with extra Point Cards. Use them wisely."
