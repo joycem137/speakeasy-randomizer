@@ -1,0 +1,11 @@
+{
+  "name": "speakeasy-randomizer",
+  "version": "0.0.1",
+  "description": "A randomizer for the game speakeasy.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joyce Mayorga",
+  "license": "ISC"
+}
