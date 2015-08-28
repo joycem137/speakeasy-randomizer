@@ -24,7 +24,15 @@
 .playerContainer {
     margin:4px;
     flex-direction: column;
-    width: 210px;
+    border-width: 1px;
+    border-style: solid;
+    text-align: center;
+}
+
+.playerData {
+    margin-left: auto;
+    margin-right: auto;
+    width: 200px;
 }
 
 .playerName {
