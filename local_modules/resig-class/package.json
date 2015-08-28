@@ -1,0 +1,8 @@
+{
+  "name": "resig-class",
+  "version": "1.0.0",
+  "description": "A Java-style class system built by John Resig",
+  "main": "index.js",
+  "author": "John Resig",
+  "license": "MIT"
+}

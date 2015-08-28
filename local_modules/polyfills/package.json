@@ -1,0 +1,8 @@
+{
+  "name": "polyfills",
+  "version": "1.0.0",
+  "description": "Standard polyfills that I love to use",
+  "main": "index.js",
+  "author": "Joyce Mayorga",
+  "license": "ISC"
+}

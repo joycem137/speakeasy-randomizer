@@ -1,0 +1,8 @@
+{
+  "name": "die-roller",
+  "version": "1.0.0",
+  "description": "A full API for doing game related dice rolling",
+  "main": "index.js",
+  "author": "Joyce Mayorga",
+  "license": "ISC"
+}

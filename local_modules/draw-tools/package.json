@@ -1,0 +1,8 @@
+{
+  "name": "draw-tools",
+  "version": "1.0.0",
+  "description": "Useful tools for drawing.",
+  "main": "index.js",
+  "author": "Joyce Mayorga",
+  "license": "ISC"
+}

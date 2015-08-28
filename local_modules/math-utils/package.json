@@ -1,0 +1,8 @@
+{
+  "name": "math-utils",
+  "version": "1.0.0",
+  "description": "Useful tools for doing math.",
+  "main": "index.js",
+  "author": "Joyce Mayorga",
+  "license": "ISC"
+}
