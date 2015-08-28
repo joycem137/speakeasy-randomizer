@@ -9,27 +9,6 @@ const passwords = require('../data/passwords');
 const roleTools = require('./roleTools');
 const numRoles = roles.length;
 
-function formatRole(role, index) {
-    let output = (index+1) + ') ' + role.name;
-
-    if (role.isRat) {
-        output += ' (Rat)';
-    }
-
-    output += ' points: ' + role.points;
-
-    if (role.passwords) {
-        output += ' passwords: ' +
-            role.passwords
-                .map((passwordCard) => passwordCard.blue + '/' + passwordCard.white)
-                .join(',');
-    } else {
-        output += ' passwords: none';
-    }
-
-    return output;
-}
-
 const passwordTable = {
     5: 2,
     6: 2,

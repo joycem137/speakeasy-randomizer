@@ -117,7 +117,8 @@ const roles = [
         mob: {
             name: "Bootlegger",
             image: "bootlegger.png",
-            power: "If the Whiskey Shipment is still in your possession at the end of the game, your team will receive a bonus. Only the Temperance Crusader can take it from you."
+            power: "If the Whiskey Shipment is still in your possession at the end of the game, your team will receive a bonus. Only the Temperance Crusader can take it from you.",
+            hasWhiskey: true
         },
         fed: {
             name: "Temperance Crusader",
@@ -144,10 +145,12 @@ const roles = [
     },
     {
         mob: {
-            name: "Speakeasy Owner"
+            name: "Speakeasy Owner",
+            image: 'speakeasy owner.png'
         },
         fed: {
-            name: "Informant"
+            name: "Informant",
+            image: 'informant.png'
         },
         maxPair: 1,
         points: 2,
