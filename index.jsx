@@ -6,26 +6,44 @@ require('polyfills');
 const React = require('react');
 
 const InputView = require('./ui/input.jsx');
+const ResultsView = require('./ui/results.jsx');
 
 const randomizer = require('./util/randomizer');
 
 const MainApp = React.createClass({
-    getInitialState: function() {
-        return {
-            showResults: false
-        };
+
+    getInitialState() {
+        return {};
     },
 
     generateResults(randomizationOptions) {
-        randomizer(randomizationOptions);
+        const results = randomizer(randomizationOptions);
+        this.setState({results});
+    },
+
+    clearResults() {
+        this.setState({results:null});
     },
 
     render() {
-        return (
-            <div>
+        const {results} = this.state;
+        let markup;
+
+        if (results) {
+            markup = (
+                <div>
+                    <button onClick={this.clearResults}>Clear Results</button>
+                    <br/>
+                    <ResultsView results={results} />
+                </div>
+            );
+        } else {
+            markup = (
                 <InputView generateResults={this.generateResults} />
-            </div>
-        );
+            );
+        }
+
+        return markup;
     }
 });
 

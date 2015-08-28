@@ -163,28 +163,23 @@ function randomize({numberOfPlayers}) {
 
     const numPasswordsPerTeam = passwordsSelected.length / 2;
 
-    const mobSide = buildSide(roleSelections, 'mob', numRats, passwordsSelected.slice(0, numPasswordsPerTeam));
-    const mobNames = mobSide.map(formatRole).join('\n');
-    console.log('Mob');
-    console.log(mobNames);
+    const mob = buildSide(roleSelections, 'mob', numRats, passwordsSelected.slice(0, numPasswordsPerTeam));
 
-    const fedSide = buildSide(roleSelections, 'fed', numRats, passwordsSelected.slice(numPasswordsPerTeam));
-    const fedNames = fedSide.map(formatRole).join('\n');
-    console.log('Fed');
-    console.log(fedNames);
+    const fed = buildSide(roleSelections, 'fed', numRats, passwordsSelected.slice(numPasswordsPerTeam));
 
     const femmeFatales = [];
     const femmeFataleSpec = roleSelections['Femme Fatale'];
     const numFemmeFatales = femmeFataleSpec ? femmeFataleSpec.number * 2 : 0;
 
-    if (numFemmeFatales > 0) {
-        for (let n = 0; n < numFemmeFatales; n++) {
-            const sidedFemme = roleTools.getSidedRole(femmeFataleSpec.role, 'none');
-            femmeFatales.push(sidedFemme);
-        }
-        const femmeFataleNames = femmeFatales.map(formatRole).join('\n');
-        console.log('Femme Fatales');
-        console.log(femmeFataleNames);
+    for (let n = 0; n < numFemmeFatales; n++) {
+        const sidedFemme = roleTools.getSidedRole(femmeFataleSpec.role, 'none');
+        femmeFatales.push(sidedFemme);
+    }
+
+    return {
+        femmeFatales,
+        mob,
+        fed
     }
 }
 
