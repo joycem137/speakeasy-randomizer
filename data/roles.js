@@ -24,6 +24,7 @@ const roles = [
         },
         increasesKnowledge: true,
         maxPair: 2,
+        points: 2,
         power: "The Moderator will reveal the identities of two roles of your choosing"
     },
     {
@@ -36,6 +37,8 @@ const roles = [
             image: "federal marshal.png"
         },
         maxPair: 1,
+        points: 2,
+        getsAllPasswords: true,
         increasesKnowledge: true,
         power: "You start the game with all your team's passwords."
     },
@@ -49,6 +52,7 @@ const roles = [
             image: "untouchable.png"
         },
         maxPair: 2,
+        points: 2,
         power: "You are immune to powers that require your password to be used."
     },
     {
@@ -61,6 +65,7 @@ const roles = [
             image: "senator.png"
         },
         maxPair: 2,
+        points: 2,
         power: "The Moderator will reveal to you the passwords of two players of your choosing.",
         increasesKnowledge: true
     },
@@ -74,6 +79,7 @@ const roles = [
             image: "internal affairs.png"
         },
         maxPair: 1,
+        points: 2,
         increasesKnowledge: true,
         power: "Name two players to the Moderator to find out if they are a Rat or not."
     },
@@ -89,6 +95,7 @@ const roles = [
         increasesDeception: true,
         increasesAction: true,
         maxPair: 2,
+        points: 2,
         power: "If another player uses a Power Card to make you reveal your role or your password, you may take a Point Card from them."
     },
     {
@@ -103,6 +110,7 @@ const roles = [
         increasesDeception: true,
         increasesAction: true,
         maxPair: 2,
+        points: 2,
         power: "You can choose one extra Power Card for free."
     },
     {
@@ -117,6 +125,7 @@ const roles = [
             power: "If you find the Bootlegger, reveal your role to that player and draw three cards from him or her. If one of them is the Whiskey Shiment, take it for a bonus to your team' score. If not, return the cards."
         },
         maxPair: 1,
+        points: 2,
         increasesAction: true
     },
     {
@@ -130,6 +139,7 @@ const roles = [
         },
         increasesAction: true,
         maxPair: 1,
+        points: 2,
         power: "The Moderator will give you a target role on the Feds. Identify the player who has that role to receive bonus points and another target (up to three targets per game). You get one guess per target. If you guess incorrectly, you do not get another target."
     },
     {
@@ -140,6 +150,7 @@ const roles = [
             name: "Informant"
         },
         maxPair: 1,
+        points: 2,
         increasesDeception: true,
         increasesKnowledge: true,
         power: "Gain two Point Cards from the Moderator if you can : (1) Identify all the opposing team's passwords or (2) Identify the Federal Marshal/Boss. You can gain up to four points this way."
@@ -154,6 +165,7 @@ const roles = [
             image: "district attorney.png"
         },
         maxPair: 1,
+        points: 2,
         power: "If any player voluntarily shows you either their role or password, they must also show you the other as well."
     },
     {
@@ -167,6 +179,7 @@ const roles = [
         },
         increasesDeception: true,
         maxPair: 2,
+        points: 2,
         power: "Receive one of the other team's Password Cards from the Moderator once per game."
     },
     {
