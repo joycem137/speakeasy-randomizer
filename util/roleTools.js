@@ -17,16 +17,19 @@ module.exports = {
     },
 
     // Return a roll specific to a side
-    getSidedRole(side, role) {
+    getSidedRole(role, side) {
         const sidedRole = {};
         for (let propName in role) {
-            if (propName !== 'mod' && propName !== 'fed') {
+            if (propName !== 'mob' && propName !== 'fed') {
                 sidedRole[propName] = role[propName];
             }
         }
 
-        for (let propName in role[side]) {
-            sidedRole[propName] = role[propName];
+        if (role[side]) {
+            for (let propName in role[side]) {
+                sidedRole[propName] = role[side][propName];
+            }
         }
+        return sidedRole;
     }
 };
