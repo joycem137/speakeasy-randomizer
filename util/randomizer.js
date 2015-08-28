@@ -52,7 +52,7 @@ const passwordTable = {
 function selectPasswords(numberOfPlayers) {
     const teamSize = Math.floor(numberOfPlayers / 2);
 
-    let totalPasswordsNeeded = passwordTable[teamSize];
+    let totalPasswordsNeeded = passwordTable[teamSize] * 2;
 
     const passwordsSelected = [];
     const passwordMemory = {};
@@ -161,15 +161,14 @@ function randomize(numberOfPlayers) {
         numRats = 2;
     }
 
-    const numPasswordsPerTeam = passwordsSelected.length / 2 - 1;
-    const mobSide = buildSide(roleSelections, 'mob', numRats, passwordsSelected.slice(0, numPasswordsPerTeam - 1));
+    const numPasswordsPerTeam = passwordsSelected.length / 2;
 
+    const mobSide = buildSide(roleSelections, 'mob', numRats, passwordsSelected.slice(0, numPasswordsPerTeam));
     const mobNames = mobSide.map(formatRole).join('\n');
-
     console.log('Mob');
     console.log(mobNames);
 
-    const fedSide = buildSide(roleSelections, 'fed', numRats, passwordsSelected.slice(numPasswordsPerTeam - 1));
+    const fedSide = buildSide(roleSelections, 'fed', numRats, passwordsSelected.slice(numPasswordsPerTeam));
     const fedNames = fedSide.map(formatRole).join('\n');
     console.log('Fed');
     console.log(fedNames);
