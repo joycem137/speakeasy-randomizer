@@ -6,9 +6,6 @@
 
 .team {
     flex-direction: column;
-    border-width:2px;
-    border-color:black;
-    border-style: solid;
 }
 
 .teamTitle {
