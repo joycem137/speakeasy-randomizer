@@ -5,37 +5,25 @@ require('polyfills');
 
 const React = require('react');
 
+const InputView = require('./ui/input.jsx');
+
 const randomizer = require('./util/randomizer');
 
 const MainApp = React.createClass({
     getInitialState: function() {
         return {
-            numberOfPlayers: 10,
             showResults: false
         };
     },
 
-    handleChange(event) {
-        let value = event.target.value;
-        this.setState({numberOfPlayers: value});
-    },
-
-    randomize() {
-        const {numberOfPlayers} = this.state;
-        randomizer(numberOfPlayers);
+    generateResults(randomizationOptions) {
+        randomizer(randomizationOptions);
     },
 
     render() {
-        const {numberOfPlayers} = this.state;
         return (
             <div>
-                Number of Players:
-                <input type="text"
-                    value={numberOfPlayers}
-                    onChange={this.handleChange}
-
-                />
-                <button onClick={this.randomize}>Randomize</button>
+                <InputView generateResults={this.generateResults} />
             </div>
         );
     }

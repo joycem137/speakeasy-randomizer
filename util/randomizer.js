@@ -152,7 +152,7 @@ function buildSide(roleSelections, side, numRats, sidePasswords) {
     return thisSide;
 }
 
-function randomize(numberOfPlayers) {
+function randomize({numberOfPlayers}) {
     const passwordsSelected = selectPasswords(numberOfPlayers);
     const roleSelections = selectRoles(numberOfPlayers);
 
