@@ -5,7 +5,7 @@
 const roles = [
     {
         name: "Femme Fatale",
-        power: "You have 15 minutes after the start of the game to choose which team is yours. Report your decision to the Moderator to reeive a Password Card of that team."
+        power: "You have 15 minutes after the start of the game to choose which team is yours. Report your decision to the Moderator to reeive a Password Card of that team.",
         disableRat: true,
         doesNotRequirePair: true,
         points: 0,
