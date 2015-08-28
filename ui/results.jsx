@@ -4,6 +4,8 @@
 
 const React = require('react');
 
+const PlayerInfo = require('./player.jsx');
+
 const InputView = React.createClass({
     propTypes: {
         results: React.PropTypes.shape({
@@ -14,7 +16,14 @@ const InputView = React.createClass({
     },
 
     render() {
-        return <div/>;
+        const {results} = this.props;
+        const {mob} = results;
+
+        return (
+            <div>
+                <PlayerInfo player={mob[0]}/>
+            </div>
+        );
     }
 });
 

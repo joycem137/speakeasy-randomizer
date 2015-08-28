@@ -8,6 +8,7 @@ var OUTPUT_JS = 'index.js';
 var OUTPUT_HTML = 'index.html';
 
 makeIndex();
+copyAssets();
 
 module.exports = {
     entry: ['./index.jsx'],
@@ -36,6 +37,16 @@ module.exports = {
         ]
     }
 };
+
+function copyAssets() {
+    fs.copy('./img', OUTPUT_DIR + '/' + ASSET_DIR + '/img', function (err) {
+        if (err) {
+            console.error(err);
+        } else {
+            console.log("success!");
+        }
+    });
+}
 
 function makeIndex() {
     var outputDOM = React.DOM.html({},

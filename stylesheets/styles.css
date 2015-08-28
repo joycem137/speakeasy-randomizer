@@ -1,0 +1,15 @@
+.playerContainer {
+    width:250px;
+    margin:4px;
+}
+
+.playerName {
+    margin: 2px;
+    font-size: 30;
+    text-align: center;
+}
+
+.playerCard {
+    margin: 8px;
+    width: 225px;
+}

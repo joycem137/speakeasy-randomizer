@@ -164,7 +164,6 @@ function randomize({numberOfPlayers}) {
     const numPasswordsPerTeam = passwordsSelected.length / 2;
 
     const mob = buildSide(roleSelections, 'mob', numRats, passwordsSelected.slice(0, numPasswordsPerTeam));
-
     const fed = buildSide(roleSelections, 'fed', numRats, passwordsSelected.slice(numPasswordsPerTeam));
 
     const femmeFatales = [];

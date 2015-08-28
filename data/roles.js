@@ -185,7 +185,7 @@ const roles = [
     {
         mob: {
             name: "Evil Backer",
-            image: 'evil backer.png"'
+            image: "evil backer.png"
         },
         fed: {
             name: "Backer",

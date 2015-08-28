@@ -3,6 +3,8 @@
  */
 require('polyfills');
 
+require('./stylesheets/styles.css');
+
 const React = require('react');
 
 const InputView = require('./ui/input.jsx');
