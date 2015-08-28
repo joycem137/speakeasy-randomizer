@@ -44,7 +44,7 @@ function selectRoles(numberOfPlayers) {
     return rolesSelected;
 }
 
-function buildSide(roleSelections, side) {
+function buildSide(roleSelections, side, numberOfPlayers) {
     const thisSide = [];
     for (let roleKey in roleSelections) {
         const roleSpec = roleSelections[roleKey];
@@ -53,6 +53,21 @@ function buildSide(roleSelections, side) {
             thisSide.push(sidedRole);
         }
     }
+
+    let numRats = 1;
+    if (numberOfPlayers > 30) {
+        numRats = 2;
+    }
+
+    while(numRats > 0) {
+        const roleIndex = Math.floor(Math.random() * thisSide.length);
+        const role = thisSide[roleIndex];
+        if (!roleIndex.isRat && !roleIndex.disableRat) {
+            role.isRat = true;
+            numRats--;
+        }
+    }
+
     return thisSide;
 }
 
@@ -69,10 +84,12 @@ const MainApp = React.createClass({
     },
 
     randomize() {
-        const roleSelections = selectRoles(this.state.numberOfPlayers);
+        const {numberOfPlayers} = this.state;
 
-        const mobSide = buildSide(roleSelections, 'mob');
-        const fedSide = buildSide(roleSelections, 'fed');
+        const roleSelections = selectRoles(numberOfPlayers);
+
+        const mobSide = buildSide(roleSelections, 'mob', numberOfPlayers);
+        const fedSide = buildSide(roleSelections, 'fed', numberOfPlayers);
 
         const mobNames = mobSide.map((role) => role.name).join('\n');
         const fedNames = fedSide.map((role) => role.name).join('\n');
