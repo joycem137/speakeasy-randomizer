@@ -24,10 +24,10 @@ function selectRoles(numberOfPlayers) {
             if (!rolesSelected[roleKey]) {
                 rolesSelected[roleKey] = {
                     role: newRole,
-                    number: 2
+                    number: 1
                 };
                 rolesRemaining = rolesRemaining - 2;
-            } else if (rolesSelected[roleKey].number / 2 < newRole.maxPair) {
+            } else if (rolesSelected[roleKey].number < newRole.maxPair) {
                 rolesSelected[roleKey].number++;
                 rolesRemaining = rolesRemaining - 2;
             }
@@ -37,7 +37,7 @@ function selectRoles(numberOfPlayers) {
     if (rolesRemaining === 1) {
         rolesSelected[femmeFatale] = {
             role: roleTools.getRole(femmeFatale, roles),
-            number: 1
+            number: 0.5
         };
     }
 
@@ -48,9 +48,11 @@ function buildSide(roleSelections, side, numberOfPlayers) {
     const thisSide = [];
     for (let roleKey in roleSelections) {
         const roleSpec = roleSelections[roleKey];
-        const sidedRole = roleTools.getSidedRole(roleSpec.role, side);
-        for (let num = 0; num < roleSpec.number; num++) {
-            thisSide.push(sidedRole);
+        if (roleSpec.role.name !== 'Femme Fatale') {
+            for (let num = 0; num < roleSpec.number; num++) {
+                const sidedRole = roleTools.getSidedRole(roleSpec.role, side);
+                thisSide.push(sidedRole);
+            }
         }
     }
 
@@ -91,13 +93,36 @@ const MainApp = React.createClass({
         const mobSide = buildSide(roleSelections, 'mob', numberOfPlayers);
         const fedSide = buildSide(roleSelections, 'fed', numberOfPlayers);
 
-        const mobNames = mobSide.map((role) => role.name).join('\n');
-        const fedNames = fedSide.map((role) => role.name).join('\n');
+        const femmeFatales = [];
+        const femmeFataleSpec = roleSelections['Femme Fatale'];
+        const numFemmeFatales = femmeFataleSpec ? femmeFataleSpec.number * 2 : 0;
+        for (let n = 0; n < numFemmeFatales; n++) {
+            const sidedFemme = roleTools.getSidedRole(femmeFataleSpec.role, 'none');
+            femmeFatales.push(sidedFemme);
+        }
+
+        function formatRole(role, index) {
+            let output = (index+1) + ') ' + role.name;
+
+            if (role.isRat) {
+                output += ' (Rat)';
+            }
+
+            return output;
+        }
+
+        const mobNames = mobSide.map(formatRole).join('\n');
+        const fedNames = fedSide.map(formatRole).join('\n');
+        const femmeFataleNames = femmeFatales.map(formatRole).join('\n');
+
         console.log('Mob');
         console.log(mobNames);
 
         console.log('Fed');
         console.log(fedNames);
+
+        console.log('Femme Fatales');
+        console.log(femmeFataleNames);
     },
 
     render() {
