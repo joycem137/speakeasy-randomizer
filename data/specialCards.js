@@ -13,6 +13,10 @@ module.exports = [
         power: "This card can only be taken from the Bootlegger by the Temperance Crusader. The Bootlegger must keep it with his/her other cards at all times.",
         image: "whiskey shipment.png",
         max: 1
+    },
+    {
+        name: "Point",
+        image: "point.png"
     }
 ];
 

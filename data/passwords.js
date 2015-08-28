@@ -4,63 +4,78 @@
 const passwords = [
     {
         white: 'Liar',
-        blue: 'Drink'
+        blue: 'Drink',
+        image: 'liar-drink.png'
     },
     {
         white: 'Hesitate',
-        blue: 'Discover'
+        blue: 'Discover',
+        image: 'hesitate-discover.png'
     },
     {
         white: 'Find',
-        blue: 'Alone'
+        blue: 'Alone',
+        image: 'find-alone.png'
     },
     {
         white: 'Part',
-        blue: 'Play'
+        blue: 'Play',
+        image: 'part-play.png'
     },
     {
         white: 'Glass',
-        blue: 'Listen'
+        blue: 'Listen',
+        image: 'glass-listen.png'
     },
     {
         white: 'Formal',
-        blue: 'Bang'
+        blue: 'Bang',
+        image: 'formal-bang.png'
     },
     {
         white: 'Shake',
-        blue: 'Bust'
+        blue: 'Bust',
+        image: 'shake-bust.png'
     },
     {
         white: 'Enjoy',
-        blue: 'Ring'
+        blue: 'Ring',
+        image: 'enjoy-ring.png'
     },
     {
         white: 'Cocktail',
-        blue: 'Stir'
+        blue: 'Stir',
+        image: 'cocktail-stir.png'
     },
     {
         white: 'Box',
-        blue: 'Fish'
+        blue: 'Fish',
+        image: 'box-fish.png'
     },
     {
         white: 'Toast',
-        blue: 'Prove'
+        blue: 'Prove',
+        image: 'toast-prove.png'
     },
     {
         white: 'Change',
-        blue: 'Cross'
+        blue: 'Cross',
+        image: 'change-cross.png'
     },
     {
         white: 'Style',
-        blue: 'Fox'
+        blue: 'Fox',
+        image: 'style-fox.png'
     },
     {
         white: 'Possible',
-        blue: 'Fake'
+        blue: 'Fake',
+        image: 'possible-fake.png'
     },
     {
         white: 'Piece',
-        blue: 'Short'
+        blue: 'Short',
+        image: 'piece-short.png'
     }
 ];
 
