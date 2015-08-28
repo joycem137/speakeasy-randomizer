@@ -192,7 +192,7 @@ const roles = [
         },
         fed: {
             name: "Backer",
-            image: 'backer.png"'
+            image: 'backer.png'
         },
         points: 4,
         maxPair: 1,

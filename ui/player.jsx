@@ -15,8 +15,12 @@ const PlayerView = React.createClass({
     render() {
         const {player} = this.props;
         const passwords = player.passwords;
-        const extraCards = passwords
-            .map((passwordCard) => passwordCard.image);
+        let extraCards = [];
+
+        if (passwords && passwords.length > 0) {
+            extraCards = passwords
+                .map((passwordCard) => passwordCard.image);
+        }
 
         if (player.isRat) {
             extraCards.push(specialCards.rat.image);
@@ -37,7 +41,9 @@ const PlayerView = React.createClass({
             <div className='playerContainer'>
                 <div className='playerName'>{player.name}</div>
                 <img className='playerCard' src={imageRoot + player.image}/>
-                {extraCardMarkup}
+                <div className='extraCards'>
+                    {extraCardMarkup}
+                </div>
             </div>
         );
     }

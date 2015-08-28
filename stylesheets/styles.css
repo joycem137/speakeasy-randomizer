@@ -1,9 +1,37 @@
+.results {
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: column;
+}
+
+.team {
+    flex-direction: column;
+    border-width:2px;
+    border-color:black;
+    border-style: solid;
+}
+
+.teamTitle {
+    margin: 2px;
+    text-align: left;
+    font-size:40;
+}
+
+.players {
+    margin: 2px;
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: row;
+}
+
 .playerContainer {
-    width:250px;
     margin:4px;
+    flex-direction: column;
+    width: 210px;
 }
 
 .playerName {
+    height: 60px;
     margin: 2px;
     font-size: 30;
     text-align: center;
@@ -11,10 +39,13 @@
 
 .playerCard {
     margin: 8px;
-    width: 225px;
+    height: 275px;
+}
+
+.extraCards {
 }
 
 .extraCard {
-    margin: 8px;
-    width: 100px;
+    margin: 5px;
+    height: 115px;
 }

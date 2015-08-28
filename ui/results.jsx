@@ -4,9 +4,9 @@
 
 const React = require('react');
 
-const PlayerInfo = require('./player.jsx');
+const TeamView = require('./team.jsx');
 
-const InputView = React.createClass({
+const ResultsView = React.createClass({
     propTypes: {
         results: React.PropTypes.shape({
             mob: React.PropTypes.array.isRequired,
@@ -16,15 +16,23 @@ const InputView = React.createClass({
     },
 
     render() {
-        const {results} = this.props;
-        const {mob} = results;
+        const {mob,fed,femmeFatales} = this.props.results;
+
+        const teams = [
+            <TeamView key='mob' team={mob} title='The Mob' />,
+            <TeamView key='fed' team={fed} title='The Feds' />
+        ];
+
+        if (femmeFatales && femmeFatales.length > 0) {
+            teams.push(<TeamView key='femmeFatales' team={femmeFatales} title='The Femme Fatales' />);
+        }
 
         return (
-            <div>
-                <PlayerInfo player={mob[0]}/>
+            <div className='results'>
+                {teams}
             </div>
         );
     }
 });
 
-module.exports = InputView;
+module.exports = ResultsView;
