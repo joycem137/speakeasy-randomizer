@@ -78,6 +78,7 @@ const roles = [
             name: "Internal Affairs",
             image: "internal affairs.png"
         },
+        disableRat: true,
         maxPair: 1,
         points: 2,
         increasesKnowledge: true,

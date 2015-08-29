@@ -5,6 +5,29 @@
 const React = require('react');
 
 const TeamView = require('./team.jsx');
+const StatsBlock = require('./stats.jsx');
+
+function calculateStats({mob, fed, femmeFatales}) {
+    let deception = 0;
+    let knowledge = 0;
+    let action = 0;
+
+    function testRole(role) {
+        if (role.increasesKnowledge) {
+            knowledge++;
+        } else if (role.increasesDeception) {
+            deception++;
+        } else if (role.increasesAction) {
+            action++;
+        }
+    }
+
+    mob.forEach(testRole);
+    fed.forEach(testRole);
+    femmeFatales.forEach(testRole);
+
+    return {deception, knowledge, action};
+}
 
 const ResultsView = React.createClass({
     propTypes: {
@@ -18,6 +41,8 @@ const ResultsView = React.createClass({
     render() {
         const {mob,fed,femmeFatales} = this.props.results;
 
+        const stats = calculateStats(this.props.results);
+
         const teams = [
             <TeamView key='mob' team={mob} title='The Mob' />,
             <TeamView key='fed' team={fed} title='The Feds' />
@@ -29,6 +54,7 @@ const ResultsView = React.createClass({
 
         return (
             <div className='results'>
+                <StatsBlock stats={stats} />
                 {teams}
             </div>
         );
