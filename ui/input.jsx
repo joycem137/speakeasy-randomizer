@@ -6,7 +6,8 @@ const React = require('react');
 const InputView = React.createClass({
     getInitialState: function() {
         return {
-            numberOfPlayers: 10
+            numberOfPlayers: 10,
+            avoidDuplicates: true
         };
     },
 
@@ -14,26 +15,40 @@ const InputView = React.createClass({
         generateResults: React.PropTypes.func.isRequired
     },
 
-    handleChange(event) {
-        let value = event.target.value;
+    handlePlayerChange(event) {
+        const {value} = event.target;
         this.setState({numberOfPlayers: value});
     },
 
+    handleDuplicateChange(event) {
+        const {checked} = event.target;
+        this.setState({avoidDuplicates: value});
+    },
+
     generateResults() {
-        const {numberOfPlayers} = this.state;
-        this.props.generateResults({numberOfPlayers});
+        const {numberOfPlayers, avoidDuplicates} = this.state;
+        this.props.generateResults({numberOfPlayers, avoidDuplicates});
     },
 
     render() {
-        const {numberOfPlayers} = this.state;
+        const {numberOfPlayers, avoidDuplicates} = this.state;
         return (
             <div>
-                Number of Players:
-                <input type="text"
-                    value={numberOfPlayers}
-                    onChange={this.handleChange}
+                <div className="inputOption">
+                    Number of Players:
+                    <input type="text"
+                        value={numberOfPlayers}
+                        onChange={this.handlePlayerChange}
 
-                />
+                    />
+                </div>
+                <div className="inputOption">
+                    Avoid Duplicate Roles
+                    <input type="checkbox"
+                        checked={avoidDuplicates}
+                        onChange={this.handleDuplicateChange}
+                    />
+                </div>
                 <button onClick={this.generateResults}>Generate</button>
             </div>
         );

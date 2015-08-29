@@ -7,6 +7,8 @@ const objectAssign = require('object-assign');
 const roles = require('../data/roles');
 const passwords = require('../data/passwords');
 const roleTools = require('./roleTools');
+const mathUtils = require('math-utils');
+
 const numRoles = roles.length;
 
 const passwordTable = {
@@ -50,18 +52,31 @@ function selectPasswords(numberOfPlayers) {
     return passwordsSelected;
 }
 
-function selectRoles(numberOfPlayers) {
+/**
+ * Select the mix of roles that will be used for this game.
+ */
+function selectRoles({numberOfPlayers, avoidDuplicates}) {
     const rolesSelected = {};
-    const femmeFatale = "Femme Fatale";
-    let rolesRemaining = numberOfPlayers;
-    if (rolesRemaining < 10) {
-        rolesRemaining = 10;
+
+    // set up our roles remaining.
+    let rolesRemaining = mathUtils.clamp(numberOfPlayers, 10, 40);
+
+    // Set up our duplicate tracker
+    let maxDuplicates = 99999999;
+    if (avoidDuplicates) {
+        maxDuplicates = Math.max(0, rolesRemaining - roles.length);
     }
+    let numDuplicates = 0;
+
+    // Now to select all of our roles, 2 at a time.
+    const femmeFatale = "Femme Fatale";
     const isEven = rolesRemaining % 2 === 0;
     while(rolesRemaining > 1) {
         const roleIndex = Math.floor(Math.random() * numRoles);
         const newRole = roles[roleIndex];
         const roleKey = roleTools.getKey(newRole);
+
+        // We don't select the femme fatale while things are odd.
         if (isEven || roleKey !== femmeFatale) {
             if (!rolesSelected[roleKey]) {
                 rolesSelected[roleKey] = {
@@ -69,13 +84,15 @@ function selectRoles(numberOfPlayers) {
                     number: 1
                 };
                 rolesRemaining = rolesRemaining - 2;
-            } else if (rolesSelected[roleKey].number < newRole.maxPair) {
+            } else if (rolesSelected[roleKey].number < newRole.maxPair
+                    && numDuplicates < maxDuplicates) {
                 rolesSelected[roleKey].number++;
                 rolesRemaining = rolesRemaining - 2;
             }
         }
     }
 
+    // Our last role is always the femme fatale, if odd numbered.
     if (rolesRemaining === 1) {
         rolesSelected[femmeFatale] = {
             role: roleTools.getRole(femmeFatale, roles),
@@ -86,6 +103,9 @@ function selectRoles(numberOfPlayers) {
     return rolesSelected;
 }
 
+/**
+ * With the selected roles, now build a specific side
+ */
 function buildSide(roleSelections, side, numRats, sidePasswords) {
     // First we organize our roles.
     const thisSide = [];
@@ -131,9 +151,9 @@ function buildSide(roleSelections, side, numRats, sidePasswords) {
     return thisSide;
 }
 
-function randomize({numberOfPlayers}) {
+function randomize({numberOfPlayers, avoidDuplicates}) {
     const passwordsSelected = selectPasswords(numberOfPlayers);
-    const roleSelections = selectRoles(numberOfPlayers);
+    const roleSelections = selectRoles({numberOfPlayers, avoidDuplicates});
 
     let numRats = 1;
     if (numberOfPlayers > 30) {
