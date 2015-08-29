@@ -22,7 +22,7 @@ const InputView = React.createClass({
 
     handleDuplicateChange(event) {
         const {checked} = event.target;
-        this.setState({avoidDuplicates: value});
+        this.setState({avoidDuplicates: checked});
     },
 
     generateResults() {
@@ -33,23 +33,27 @@ const InputView = React.createClass({
     render() {
         const {numberOfPlayers, avoidDuplicates} = this.state;
         return (
-            <div>
+            <div className="inputOptions">
                 <div className="inputOption">
-                    Number of Players:
-                    <input type="text"
+                    <div className="inputLabel">Number of Players:</div>
+                    <input className="playerInput" type="text"
                         value={numberOfPlayers}
                         onChange={this.handlePlayerChange}
 
                     />
                 </div>
                 <div className="inputOption">
-                    Avoid Duplicate Roles
-                    <input type="checkbox"
-                        checked={avoidDuplicates}
-                        onChange={this.handleDuplicateChange}
-                    />
+                    <div className="inputLabel">Avoid Duplicate Roles:</div>
+                    <div className="inputCheck">
+                        <input type="checkbox" value="None" id="avoidDuplicates"
+                            name="check"
+                            checked={avoidDuplicates}
+                            onChange={this.handleDuplicateChange}
+                        />
+                        <label htmlFor="avoidDuplicates"></label>
+                    </div>
                 </div>
-                <button onClick={this.generateResults}>Generate</button>
+                <button onClick={this.generateResults}>Generate Roles</button>
             </div>
         );
     }

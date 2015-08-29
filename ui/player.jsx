@@ -39,7 +39,7 @@ const PlayerView = React.createClass({
 
         return (
             <div className='playerContainer'>
-                <div className='playerName playerData'>{player.name}</div>
+                <div className='playerName playerData'>Player #</div>
                 <img className='playerCard playerData' src={imageRoot + player.image}/>
                 <div className='extraCards playerData'>
                     {extraCardMarkup}

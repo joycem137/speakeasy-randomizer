@@ -3,7 +3,8 @@
  */
 require('polyfills');
 
-require('./stylesheets/styles.css');
+require('./stylesheets/results.css');
+require('./stylesheets/input.css');
 
 const React = require('react');
 
