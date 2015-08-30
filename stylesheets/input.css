@@ -1,7 +1,7 @@
 .inputOptions {
     display: -webkit-flex; /* Safari */
     display: flex;
-    margin: 10px;
+    margin: 5px;
     flex-direction: column;
 }
 
@@ -14,6 +14,8 @@
 
 .inputLabel {
     margin: 2px;
+    width: 250px;
+    margin-right: 50px;
     font-size:25;
 }
 
@@ -24,6 +26,7 @@
 }
 
 button {
+    margin: 5px;
     width: 200px;
     height: 40px;
     font-size:25;
