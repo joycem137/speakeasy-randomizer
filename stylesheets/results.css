@@ -63,3 +63,25 @@
     border-radius:30px;
     border-width:2px;
 }
+
+.statsBlock {
+    display: -webkit-flex; /* Safari */
+    display: flex;
+    flex-direction: row;
+
+    padding: 5px;
+    border-style: solid;
+    border-radius:5px;
+    border-width:1px;
+    text-align: center;
+
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+}
+
+.stat {
+    margin: 10px;
+    font-size: 20;
+    text-align: center;
+}

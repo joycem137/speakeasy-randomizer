@@ -16,10 +16,10 @@ const StatsBlock = React.createClass({
     render() {
         const {deception,knowledge,action} = this.props.stats;
         return (
-            <div>
-                <div>Deception: {deception/2}</div>
-                <div>Knowledge: {knowledge/2}</div>
-                <div>Action: {action/2}</div>
+            <div className="statsBlock">
+                <div className="stat">Deception: {deception/2}</div>
+                <div className="stat">Knowledge: {knowledge/2}</div>
+                <div className="stat">Action: {action/2}</div>
             </div>
         );
     }
