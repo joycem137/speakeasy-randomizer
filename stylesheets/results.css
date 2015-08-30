@@ -32,7 +32,7 @@
 .playerData {
     margin-left: auto;
     margin-right: auto;
-    width: 200px;
+    width: 125px;
 }
 
 .playerName {
@@ -44,7 +44,6 @@
 
 .playerCard {
     margin: 8px;
-    height: 275px;
 }
 
 .extraCards {
@@ -52,7 +51,7 @@
 
 .extraCard {
     margin: 5px;
-    height: 115px;
+    width: 50px;
 }
 
 .zoomImage {
