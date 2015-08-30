@@ -18,8 +18,8 @@ const ResultsView = React.createClass({
 
     getInitialState() {
         return {
-            scrollX: 0,
-            scrollY: 0,
+            scrollX: window.scrollX,
+            scrollY: window.scrollY,
             windowWidth: window.innerWidth,
             windowHeight: window.innerHeight
         };
