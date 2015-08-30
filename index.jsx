@@ -14,7 +14,6 @@ const ResultsView = require('./ui/results.jsx');
 const randomizer = require('./util/randomizer');
 
 const MainApp = React.createClass({
-
     getInitialState() {
         return {};
     },

@@ -54,3 +54,13 @@
     margin: 5px;
     height: 115px;
 }
+
+.zoomImage {
+    background-color: white;
+    position: absolute;
+    height:600px;
+    padding: 15px;
+    border-style: solid;
+    border-radius:30px;
+    border-width:2px;
+}

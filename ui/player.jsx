@@ -7,6 +7,8 @@ const specialCards = require('../data/specialCards');
 
 const imageRoot = 'assets/img/';
 
+const ZoomableImage = require('./zoomableImage.jsx');
+
 const PlayerView = React.createClass({
     propTypes: {
         player: React.PropTypes.object
@@ -35,12 +37,11 @@ const PlayerView = React.createClass({
         }
 
         const extraCardMarkup = extraCards
-            .map((url) => <img className='extraCard' src={imageRoot + url} />);
+            .map((url) => <ZoomableImage className='extraCard' src={imageRoot + url} />);
 
         return (
             <div className='playerContainer'>
-                <div className='playerName playerData'>Player #</div>
-                <img className='playerCard playerData' src={imageRoot + player.image}/>
+                <ZoomableImage className='playerCard playerData' src={imageRoot + player.image}/>
                 <div className='extraCards playerData'>
                     {extraCardMarkup}
                 </div>

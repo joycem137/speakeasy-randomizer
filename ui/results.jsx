@@ -30,6 +30,54 @@ function calculateStats({mob, fed, femmeFatales}) {
 }
 
 const ResultsView = React.createClass({
+    childContextTypes: {
+        setZoomImage: React.PropTypes.func.isRequired
+    },
+
+    getChildContext() {
+        return {
+            setZoomImage: this.setZoomImage
+        };
+    },
+
+    getInitialState() {
+        return {
+            showZoomImage: null,
+            scrollX: 0,
+            scrollY: 0,
+            windowWidth: window.innerWidth,
+            windowHeight: window.innerHeight
+        };
+    },
+
+    setZoomImage(url) {
+        this.setState({showZoomImage: url});
+    },
+
+    hideZoomImage() {
+        this.setState({showZoomImage: null});
+    },
+
+    componentDidMount() {
+        window.addEventListener('scroll', this.handleWindowChange);
+        window.addEventListener('resize', this.handleWindowChange);
+    },
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleWindowChange);
+        window.removeEventListener('resize', this.handleWindowChange);
+    },
+
+    handleWindowChange() {
+        const {scrollX, scrollY,innerWidth, innerHeight} = window;
+        this.setState({
+            scrollX,
+            scrollY,
+            windowWidth: innerWidth,
+            windowHeight: innerHeight
+        });
+    },
+
     propTypes: {
         results: React.PropTypes.shape({
             mob: React.PropTypes.array.isRequired,
@@ -39,6 +87,7 @@ const ResultsView = React.createClass({
     },
 
     render() {
+        const {showZoomImage, scrollX, scrollY, windowWidth, windowHeight} = this.state;
         const {mob,fed,femmeFatales} = this.props.results;
 
         const stats = calculateStats(this.props.results);
@@ -52,8 +101,20 @@ const ResultsView = React.createClass({
             teams.push(<TeamView key='femmeFatales' team={femmeFatales} title='The Femme Fatales' />);
         }
 
+        let zoomImage;
+        if (showZoomImage) {
+            const xCenter = windowWidth / 2 - 220;
+            const zoomTop = scrollY + 25;
+            const zoomLeft = scrollX + xCenter;
+            zoomImage = <img className='zoomImage'
+                style={{top:zoomTop, left: zoomLeft}}
+                onClick={this.hideZoomImage}
+                src={showZoomImage}/>;
+        };
+
         return (
             <div className='results'>
+                {zoomImage}
                 <StatsBlock stats={stats} />
                 {teams}
             </div>
