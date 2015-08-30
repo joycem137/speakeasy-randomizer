@@ -6,6 +6,7 @@ const React = require('react');
 
 const TeamView = require('./team.jsx');
 const StatsBlock = require('./stats.jsx');
+const ZoomImage = require('./ZoomImage.jsx');
 
 function calculateStats({mob, fed, femmeFatales}) {
     let deception = 0;
@@ -42,11 +43,7 @@ const ResultsView = React.createClass({
 
     getInitialState() {
         return {
-            showZoomImage: null,
-            scrollX: 0,
-            scrollY: 0,
-            windowWidth: window.innerWidth,
-            windowHeight: window.innerHeight
+            showZoomImage: null
         };
     },
 
@@ -56,26 +53,6 @@ const ResultsView = React.createClass({
 
     hideZoomImage() {
         this.setState({showZoomImage: null});
-    },
-
-    componentDidMount() {
-        window.addEventListener('scroll', this.handleWindowChange);
-        window.addEventListener('resize', this.handleWindowChange);
-    },
-
-    componentWillUnmount() {
-        window.removeEventListener('scroll', this.handleWindowChange);
-        window.removeEventListener('resize', this.handleWindowChange);
-    },
-
-    handleWindowChange() {
-        const {scrollX, scrollY,innerWidth, innerHeight} = window;
-        this.setState({
-            scrollX,
-            scrollY,
-            windowWidth: innerWidth,
-            windowHeight: innerHeight
-        });
     },
 
     propTypes: {
@@ -103,12 +80,8 @@ const ResultsView = React.createClass({
 
         let zoomImage;
         if (showZoomImage) {
-            const xCenter = windowWidth / 2 - 220;
-            const zoomTop = scrollY + 25;
-            const zoomLeft = scrollX + xCenter;
-            zoomImage = <img className='zoomImage'
-                style={{top:zoomTop, left: zoomLeft}}
-                onClick={this.hideZoomImage}
+            zoomImage = <ZoomImage
+                onHide={this.hideZoomImage}
                 src={showZoomImage}/>;
         };
 
