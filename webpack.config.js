@@ -7,6 +7,7 @@ var ASSET_DIR = 'assets';
 var OUTPUT_JS = 'index.js';
 var OUTPUT_HTML = 'index.html';
 
+makeDirectories();
 makeIndex();
 copyAssets();
 
@@ -59,4 +60,14 @@ function makeIndex() {
     );
 
     fs.writeFileSync(OUTPUT_DIR + '/' + OUTPUT_HTML, React.renderToStaticMarkup(outputDOM));
+}
+
+
+function makeDirectories() {
+    if(!fs.existsSync(OUTPUT_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR)
+    }
+    if(!fs.existsSync(OUTPUT_DIR + '/' + ASSET_DIR)) {
+        fs.mkdirSync(OUTPUT_DIR + '/' + ASSET_DIR)        
+    }
 }
